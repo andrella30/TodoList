@@ -3,31 +3,28 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-    },
-    appBar: {
-        flex: 0.3,
-        backgroundColor: '#000000',
-        padding: 24,
-        
+        backgroundColor:"#131016",
+        padding: 8,
     },
     listContainer: {
         flex:1, 
         backgroundColor:"#131016",
-        padding: 24,
+        padding: 16,
         width: '100%'
     },
     titleName: {
         color: 'white', 
         fontSize: 32, 
         fontWeight: 'bold', 
-        marginTop: 68,
+        marginTop: 60,
         textAlign: 'center'
     },
     inputContainer: {
         width: '100%',
         flexDirection: 'row',
-        marginTop: 36,
+        marginTop: 28,
         marginBottom: 8,
+        padding: 16
     },
     inputText: {
         flex: 1,
@@ -58,8 +55,14 @@ export const styles = StyleSheet.create({
         marginTop: 12,
         marginBottom: 18
     },
-    abasName: {
-        color: 'white', 
+    createName: {
+        color: '#00FFFF', 
+        fontSize: 16, 
+        fontWeight: 'bold', 
+        textAlign: 'center'
+    },
+    finishName: {
+        color: '#6495ED', 
         fontSize: 16, 
         fontWeight: 'bold', 
         textAlign: 'center'
@@ -78,6 +81,6 @@ export const styles = StyleSheet.create({
         fontSize: 12,
         color: '#FFF',
         textAlign: 'center',
-    }
+    },
 
 })

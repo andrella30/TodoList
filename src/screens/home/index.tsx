@@ -1,17 +1,15 @@
-import {View, Text, TextInput, TouchableOpacity, Alert, FlatList} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity, Alert, FlatList, } from 'react-native'
 import { styles } from './style'
 
 import {Line}  from '../../components/Line'
 import {Task} from '../../components/Task'
 import { useState } from 'react'
 
-
 type TaskInterface = {
     id: number
     text: string
     isChecked: boolean
 }
-
 
 export default function Home() {
     const [tasks, setTasks] = useState<TaskInterface[]>([])
@@ -50,7 +48,7 @@ export default function Home() {
  
     function handleCheckTask(task: TaskInterface) {
         task.isChecked = true
-        tasks.sort((a, b) => (a.isChecked > b.isChecked) ? 1 : -1)
+        tasks.sort((a, b) => (b.isChecked === false) ? 1 : -1)
         setFinishTasks(prev => prev + 1)
     }
 
@@ -62,36 +60,28 @@ export default function Home() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.appBar}>
-                
-                <View>
-                    <Text key="1" style={styles.titleName}>todo</Text>
-                </View>
 
-                <View style={styles.inputContainer}>
-                    <TextInput 
-                        style={styles.inputText}
-                        placeholder="Adicione uma nova tarefa"
-                        placeholderTextColor= "#6B6B6B"
-                        onChangeText={setTaskName}
-                        value={taskName}
-                    />
+            <Text key="1" style={styles.titleName}>Todo</Text>
 
-                    <TouchableOpacity 
-                        style={styles.button}
-                        onPress={handleTasksAdd}>
-                        <Text style={styles.buttonText}> + </Text>
-                    </TouchableOpacity>
-
-                </View>
-            </View>
-
-
+            <View style={styles.inputContainer}>
+                <TextInput 
+                    style={styles.inputText}
+                    placeholder="Adicione uma nova tarefa"
+                    placeholderTextColor= "#6B6B6B"
+                    onChangeText={setTaskName}
+                    value={taskName}
+                />
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress={handleTasksAdd}>
+                    <Text style={styles.buttonText}> + </Text>
+                </TouchableOpacity>
+            </View> 
 
             <View style={styles.listContainer}>
                 <View style={styles.abasText}>
-                    <Text key="2" style={styles.abasName}>Criadas {createTasks}</Text>
-                    <Text key="3" style={styles.abasName}>Concluidas {finishTasks}</Text>
+                    <Text key="2" style={styles.createName}>Criadas {createTasks}</Text>
+                    <Text key="3" style={styles.finishName}>Concluidas {finishTasks}</Text>
                 </View>
                 <FlatList 
                     data={tasks}
@@ -115,17 +105,6 @@ export default function Home() {
                     )}
                 />
             </View>
-
-
-
-
-
-
-
-
-
-
-
         </View>
     );
 }
